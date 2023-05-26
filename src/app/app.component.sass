@@ -1,0 +1,27 @@
+$layout-breakpoint-small: 600px
+$layout-breakpoint-large: 768px
+
+.container
+  margin-top: 5px
+  height: 100vh
+  border: 2px solid black
+  border-radius: 20px
+  background-color: blue
+
+@media (max-width: $layout-breakpoint-small) 
+
+  .container
+    background-color: green
+
+@media (min-width: $layout-breakpoint-large)
+
+  .container
+    margin: 5px calc((100vw - 768px)/2)
+    background-color: #ff0000
+
+h1
+  font-family: FreeMono, monospace
+  width: 100%
+  margin: 10px
+  text-align: center
+  justify-content: center
