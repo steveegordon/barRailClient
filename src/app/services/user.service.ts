@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { User } from '../User';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+// import { User } from '../User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor( private http: HttpClient ) { }
 
-  getUser(): Observable<User> {
-    const user = User;
-    return user;
+  public getUser(url: string, options?: any) {
+    return this.http.get(url, options);
   }
 }
