@@ -1,1 +1,3 @@
-  <app-button class="header-button" color="purple" text="Users" (btnClick)="showUsers()"></app-button>
+<div *ngFor="let user of users | async">
+  <h1>{{user.id}}</h1>
+</div>

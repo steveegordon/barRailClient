@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service'
 import { User } from '../../User';
 
@@ -8,15 +8,14 @@ import { User } from '../../User';
   providers: [ UserService ],
   styleUrls: ['./user.component.sass']
 })
-export class UserComponent {
-  users: User | undefined;
+export class UserComponent implements OnInit {
+  users$: Observable<User[]>;
 
   constructor(private userService: UserService) {}
 
   ngOnInit():  void {
-  }
-  showUsers() {
     this.userService.getUsers()
       .subscribe(obj => console.log(obj));
   }
+
 }
