@@ -14,6 +14,6 @@ export class UserService {
   constructor( private http: HttpClient ) { }
 
   getUsers() {
-    return this.http.get<User[]> = of(Constants.USERS_ENDPOINT);
+    return this.http.get<User>(Constants.USERS_ENDPOINT);
   }
 }

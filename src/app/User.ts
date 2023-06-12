@@ -1,7 +1,11 @@
 export interface User {
-    id?: string,
+    _id?: string,
     name: string,
     age: number,
     password?: string
 
+}
+
+export interface Users {
+    usersList: User[]
 }
