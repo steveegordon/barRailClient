@@ -1,1 +1,12 @@
-<p>data works!</p>
+<h1>Well Rail 1</h1>
+<div *ngFor="let data of data$ | async">
+  <h3>{{ data.time }}</h3>
+  <p>Vodka: {{ data.s1 }}oz.</p>
+  <p>Tequila: {{ data.s2 }}oz.</p>
+  <p>Rum: {{ data.s3 }}oz.</p>
+  <p>Whiskey: {{ data.s4 }}oz.</p>
+  <p>Triple Sec: {{ data.s5 }}oz.</p>
+  <p>Peach Schnapps: {{ data.s6 }}oz.</p>
+  <p>Apple Pucker: {{ data.s7 }}oz.</p>
+  <p>Kahlua: {{ data.s8 }}oz.</p>
+</div>

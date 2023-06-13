@@ -3,7 +3,6 @@ export interface User {
     name: string,
     age: number,
     password?: string
-
 }
 
 export interface Users {
