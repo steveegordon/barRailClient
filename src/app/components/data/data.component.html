@@ -1,12 +1,21 @@
 <h1>Well Rail 1</h1>
-<div *ngFor="let data of data$ | async">
+<div class="columnLabel"><p>Time</p></div>
+<div class="columnLabel"><p>Vodka</p></div>
+<div class="columnLabel"><p>Tequila</p></div>
+<div class="columnLabel"><p>Rum</p></div>
+<div class="columnLabel"><p>Whiskey</p></div>
+<div class="columnLabel"><p>Triple Sec</p></div>
+<div class="columnLabel"><p>Peach Schnapps</p></div>
+<div class="columnLabel"><p>Apple Pucker</p></div>
+<div class="columnLabel"><p>Kahlua</p></div>
+<div class="dataRow" *ngFor="let data of data$ | async">
   <h3>{{ data.time }}</h3>
-  <p>Vodka: {{ data.s1 }}oz.</p>
-  <p>Tequila: {{ data.s2 }}oz.</p>
-  <p>Rum: {{ data.s3 }}oz.</p>
-  <p>Whiskey: {{ data.s4 }}oz.</p>
-  <p>Triple Sec: {{ data.s5 }}oz.</p>
-  <p>Peach Schnapps: {{ data.s6 }}oz.</p>
-  <p>Apple Pucker: {{ data.s7 }}oz.</p>
-  <p>Kahlua: {{ data.s8 }}oz.</p>
+  <p>{{ data.s1 }}oz.</p>
+  <p>{{ data.s2 }}oz.</p>
+  <p>{{ data.s3 }}oz.</p>
+  <p>{{ data.s4 }}oz.</p>
+  <p>{{ data.s5 }}oz.</p>
+  <p>{{ data.s6 }}oz.</p>
+  <p>{{ data.s7 }}oz.</p>
+  <p>{{ data.s8 }}oz.</p>
 </div>
