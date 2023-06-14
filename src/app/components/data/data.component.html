@@ -1,15 +1,17 @@
 <h1>Well Rail 1</h1>
-<div class="columnLabel"><p>Time</p></div>
-<div class="columnLabel"><p>Vodka</p></div>
-<div class="columnLabel"><p>Tequila</p></div>
-<div class="columnLabel"><p>Rum</p></div>
-<div class="columnLabel"><p>Whiskey</p></div>
-<div class="columnLabel"><p>Triple Sec</p></div>
-<div class="columnLabel"><p>Peach Schnapps</p></div>
-<div class="columnLabel"><p>Apple Pucker</p></div>
-<div class="columnLabel"><p>Kahlua</p></div>
+<div class="labelRow">
+  <div class="columnLabel time"><p>Time</p></div>
+  <div class="columnLabel"><p>Vodka</p></div>
+  <div class="columnLabel"><p>Tequila</p></div>
+  <div class="columnLabel"><p>Rum</p></div>
+  <div class="columnLabel"><p>Whiskey</p></div>
+  <div class="columnLabel"><p>Triple Sec</p></div>
+  <div class="columnLabel"><p>P. Schnapps</p></div>
+  <div class="columnLabel"><p>Apple Pucker</p></div>
+  <div class="columnLabel"><p>Kahlua</p></div>
+</div>
 <div class="dataRow" *ngFor="let data of data$ | async">
-  <h3>{{ data.time }}</h3>
+  <p>{{ data.time }}</p>
   <p>{{ data.s1 }}oz.</p>
   <p>{{ data.s2 }}oz.</p>
   <p>{{ data.s3 }}oz.</p>
