@@ -21,6 +21,11 @@ export class DataService {
     return this.socket.fromEvent('connected').pipe(map((data) => console.log(data)));
   }
 
+  updateData() {
+    // not sure if server firing or not or need to fix callbacks
+    return this.socket.fromEvent('newData').pipe(map((data) => console.log(data), this.getData()));
+  }
+
   postData(data: Data): Observable<Data> {
     console.log(data);
     this.sendMessage('test');
