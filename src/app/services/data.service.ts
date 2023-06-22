@@ -12,18 +12,23 @@ import { Constants } from '../config/constants'
 })
 export class DataService {
 
-  constructor( private http: HttpClient, private socket: Socket) { }
+  constructor( private http: HttpClient, private socket: Socket) {
+      this.socket.on('connected', (arg: String) => console.log(arg));
+      this.socket.on('newData', (arg: String) => {
+        console.log(arg);
+        this.getData();
+      });
+   }
+
 
   sendMessage(msg: String) {
     this.socket.emit('sending', msg)
   }
-  receiveUpdate() {
-    return this.socket.fromEvent('connected').pipe(map((data) => console.log(data)));
-  }
 
   updateData() {
     // not sure if server firing or not or need to fix callbacks
-    return this.socket.fromEvent('newData').pipe(map((data) => console.log(data), this.getData()));
+    // return this.socket.fromEvent('newData').pipe(map((data) => console.log(data), this.getData()));
+    // this.socket.on('newData', function(){console.log('received update emitter')});
   }
 
   postData(data: Data): Observable<Data> {
