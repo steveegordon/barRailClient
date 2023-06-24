@@ -26,7 +26,8 @@ export class DataComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.data$ = this.dataService.getData();
+    // this.data$ = this.dataService.getData();
+    this.data$ = this.dataService.dataObj;
     console.log(this.data$);
   }
 
