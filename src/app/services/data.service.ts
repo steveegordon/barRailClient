@@ -11,15 +11,20 @@ import { Constants } from '../config/constants'
   providedIn: 'root'
 })
 export class DataService {
+  dataObj = this.socket.fromEvent<Data[]>('newData');
 
   constructor( private http: HttpClient, private socket: Socket) {
       this.socket.on('connected', (arg: String) => console.log(arg));
-      this.socket.on('newData', (arg: String) => {
-        console.log(arg);
-        this.getData();
-      });
+      this.socket.on('newData', function(){}
+        // this.getData();
+      );
+      this.login('gribbles@gmail.com', 'XYZABC123');
+      this.socket.on('error', (arg: String) => console.log(arg));
    }
 
+   login(email: String, password: String) {
+    this.socket.emit('login', email, password);
+   }
 
   sendMessage(msg: String) {
     this.socket.emit('sending', msg)
