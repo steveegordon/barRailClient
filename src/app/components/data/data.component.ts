@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./data.component.sass']
 })
 export class DataComponent implements OnInit {
-  data$!: Observable<Data[]>;
+  data$: any[] = [];
   newData: Data = {
   time: '2023-06-14 20:15:00',
   s1: 25.36,
@@ -27,7 +27,9 @@ export class DataComponent implements OnInit {
 
   ngOnInit(): void {
     // this.data$ = this.dataService.getData();
-    this.data$ = this.dataService.dataObj;
+    this.dataService.sourceUsers().subscribe((usrs:any)=>{
+      this.data$.push(usrs);
+    });
     console.log(this.data$);
   }
 

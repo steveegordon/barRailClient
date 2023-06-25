@@ -15,9 +15,7 @@ export class DataService {
 
   constructor( private http: HttpClient, private socket: Socket) {
       this.socket.on('connected', (arg: String) => console.log(arg));
-      this.socket.on('newData', function(){}
         // this.getData();
-      );
       this.login('gribbles@gmail.com', 'XYZABC123');
       this.socket.on('error', (arg: String) => console.log(arg));
    }
@@ -34,6 +32,14 @@ export class DataService {
     // not sure if server firing or not or need to fix callbacks
     // return this.socket.fromEvent('newData').pipe(map((data) => console.log(data), this.getData()));
     // this.socket.on('newData', function(){console.log('received update emitter')});
+  }
+
+  sourceUsers = () => {
+    return new Observable(observer => {
+      this.socket.on('userCollection', (data: any) => {
+        observer.next(data);
+      })
+    })
   }
 
   postData(data: Data): Observable<Data> {
