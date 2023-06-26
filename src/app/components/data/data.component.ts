@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service'
 import { Data } from '../../Data';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-data',
@@ -10,7 +10,8 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./data.component.sass']
 })
 export class DataComponent implements OnInit {
-  data$: any[] = [];
+  socketData: any;
+  sub!: Subscription;
   newData: Data = {
   time: '2023-06-14 20:15:00',
   s1: 25.36,
@@ -23,20 +24,22 @@ export class DataComponent implements OnInit {
   s8: 25.36,
   }
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {
+    this.dataService.getEventListener().subscribe(() => console.log('wizzywig'));
+  }
 
   ngOnInit(): void {
-    // this.data$ = this.dataService.getData();
-    this.dataService.sourceUsers().subscribe((usrs:any)=>{
-      this.data$.push(usrs);
-    });
-    console.log(this.data$);
+    
   }
-
+  // getSocketData(): void {
+  //   this.sub = this.dataService.sourceData()
+  //     .subscribe(data => {
+  //       this.socketData = data
+  //     })
   post() {
-    this.dataService
-      .postData(this.newData)
-      .subscribe(data => this.data$);
+    // console.log(this.socketData);
+    // this.dataService
+    //   .postData(this.newData)
+    //   .subscribe(data => this.data$);
   }
-
 }

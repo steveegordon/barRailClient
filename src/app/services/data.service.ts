@@ -11,7 +11,6 @@ import { Constants } from '../config/constants'
   providedIn: 'root'
 })
 export class DataService {
-  dataObj = this.socket.fromEvent<Data[]>('newData');
 
   constructor( private http: HttpClient, private socket: Socket) {
       this.socket.on('connected', (arg: String) => console.log(arg));
@@ -33,13 +32,21 @@ export class DataService {
     // return this.socket.fromEvent('newData').pipe(map((data) => console.log(data), this.getData()));
     // this.socket.on('newData', function(){console.log('received update emitter')});
   }
-
-  sourceUsers = () => {
-    return new Observable(observer => {
-      this.socket.on('userCollection', (data: any) => {
-        observer.next(data);
-      })
-    })
+  // observer: any;
+  // sourceData(): Observable<any> {
+  //   this.socket.on('userCollection', (res: any) => {
+  //     this.observer.next(res);
+  //   });
+  //   return this.getUserObservable();
+  // }
+  // getUserObservable(): Observable<any> {
+  //   return new Observable(observer => {
+  //     this.observer = observer
+  //   })
+  // }
+  // 
+  getEventListener() {
+    return this.socket.fromEvent('userCollection');
   }
 
   postData(data: Data): Observable<Data> {
