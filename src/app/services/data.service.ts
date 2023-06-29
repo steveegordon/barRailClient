@@ -15,7 +15,7 @@ export class DataService {
   constructor( private http: HttpClient, private socket: Socket) {
       this.socket.on('connected', (arg: String) => console.log(arg));
         // this.getData();
-      this.login('gribbles@gmail.com', 'XYZABC123');
+      this.login('Bubba@gmail.com', 'doogiewoog');
       this.socket.on('error', (arg: String) => console.log(arg));
    }
    //socket based connections 
