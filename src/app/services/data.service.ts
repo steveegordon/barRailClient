@@ -18,7 +18,7 @@ export class DataService {
       this.login('gribbles@gmail.com', 'XYZABC123');
       this.socket.on('error', (arg: String) => console.log(arg));
    }
-
+   //socket based connections 
    login(email: String, password: String) {
     this.socket.emit('login', email, password);
    }
