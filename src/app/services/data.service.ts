@@ -17,6 +17,7 @@ export class DataService {
         // this.getData();
       this.login('Bubba@gmail.com', 'doogiewoog');
       this.socket.on('error', (arg: String) => console.log(arg));
+      this.socket.on('userData', (data: Data[]) => this.receiveUserData(data));
    }
    //socket based connections 
    login(email: String, password: String) {
@@ -25,6 +26,12 @@ export class DataService {
 
   sendMessage(msg: String) {
     this.socket.emit('sending', msg)
+  }
+  //have to link up observable to data component(otherwise appears to work)
+  receiveUserData(data: Data[]): Observable<Data[]> {
+    console.log('received usersData');
+    console.log(data);
+    return of(data);
   }
 
   updateData() {
